@@ -16,7 +16,7 @@ Uses [OpenTheDamnDoor](https://github.com/michaelkamphausen/OpenTheDamnDoor) as 
 * choose *Tools > Serial Port > /dev/tty.usbmodemXXXXX*
 * make your changes to the Arduino code, click upload in the editor window and check the console output
 * for programming reference, see <http://arduino.cc/en/Reference/HomePage>
-* for the DoorOpener hardware layout, check the [DoorOpener.fzz](door-opener/arduino/DoorOpener.fzz) sketch file
+* for the DoorOpener hardware layout, check the [DoorOpener.fzz](arduino/DoorOpener.fzz) sketch file
 
 ### Frontend
 * OS X Menu Bar Tool: open OpenTheDamnDoor.app if already build, otherwise open [OpenTheDamnDoor.xcodeproj](frontend/OpenTheDamnDoor/OpenTheDamnDoor.xcodeproj), choose *Product > Archive* from the menu and then click *Distribute…* and *Export as Application*, choose *Don't Re-Sign* if you do not participate in the Mac Developer Program

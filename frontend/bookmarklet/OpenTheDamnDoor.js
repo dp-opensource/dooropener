@@ -1,0 +1,1 @@
+javascript:(function(){var%20timer=setTimeout(function(){xhr.abort();alert("Verbindungsproblem:\nEntweder%20bist%20du%20offline%20-%20oder%20die%20Tür.");},5000);var%20xhr=new%20XMLHttpRequest();xhr.open('GET','http://10.0.0.64/letmein.html',true);xhr.onreadystatechange=function(){if((xhr.readyState==4)&&(xhr.status==200)){clearTimeout(timer);}};xhr.send();})();

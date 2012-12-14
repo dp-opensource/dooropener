@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Türöffner</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <style>
+html {
+  width:100%;
+  height:100%;
+}
+body {
+  position:absolute;
+  width:100%;
+  height:100%;
+  /*max-width:768px;
+  max-height:1024px;*/
+  background:#ddd;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  perspective:2000px;
+  -webkit-perspective:1000px;
+  -moz-perspective:2000px;
+  -ms-perspective:2000px;
+  -o-perspective:2000px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+}
+#floor {
+  position:fixed;
+  left:-50%;
+  top:-50%;
+  width:200%;
+  height:200%;
+  background-image: linear-gradient(bottom, #BBBBBB 0%, #EEEEEE 40%, #CCCCCC 100%);
+  background-image: -o-linear-gradient(bottom, #BBBBBB 0%, #EEEEEE 40%, #CCCCCC 100%);
+  background-image: -moz-linear-gradient(bottom, #BBBBBB 0%, #EEEEEE 40%, #CCCCCC 100%);
+  background-image: -webkit-linear-gradient(bottom, #BBBBBB 0%, #EEEEEE 40%, #CCCCCC 100%);
+  background-image: -ms-linear-gradient(bottom, #BBBBBB 0%, #EEEEEE 40%, #CCCCCC 100%);
+  
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #BBBBBB),
+    color-stop(0.4, #EEEEEE),
+    color-stop(1, #CCCCCC)
+  );
+  -webkit-transform:translateZ(-1000px);
+}
+#door1, #door2 {
+  position:absolute;
+  top:10%;
+  width:40%;
+  height:80%;
+  background:#ddd;
+  transition:all 1s;
+  -webkit-transition:all 1s;
+  -moz-transition:all 1s;
+  -ms-transition:all 1s;
+  -o-transition:all 1s;
+  transform:translateZ(200px) rotateY(0deg);
+  -webkit-transform:translateZ(200px) rotateY(0deg);
+  -moz-transform:translateZ(200px) rotateY(0deg);
+  -ms-transform:translateZ(200px) rotateY(0deg);
+  -o-transform:translateZ(200px) rotateY(0deg);
+  -webkit-transform-style: preserve-3d;
+}
+#door1:after, #door2:after {
+  content:'\00a0';
+  position:absolute;
+  width:100%;
+  top:100%;
+  left:0;
+  height:20px;
+  box-shadow:0 100px 40px #777;
+  -webkit-box-shadow:0 100px 40px #777;
+  -moz-box-shadow:0 100px 40px #777;
+  -ms-box-shadow:0 100px 40px #777;
+  -o-box-shadow:0 100px 40px #777;
+  transform:translateY(-20px) rotateX(90deg) translateY(-100px);
+  -webkit-transform:translateY(-20px) rotateX(90deg) translateY(-100px);
+  -moz-transform:translateY(-20px) rotateX(90deg) translateY(-100px);
+  -ms-transform:translateY(-20px) rotateX(90deg) translateY(-100px);
+  -o-transform:translateY(-20px) rotateX(90deg) translateY(-100px);
+  transform-origin:0 100%;
+  -webkit-transform-origin:0 100%;
+  -moz-transform-origin:0 100%;
+  -ms-transform-origin:0 100%;
+  -o-transform-origin:0 100%;
+}
+#door1 {
+  left:10%;
+  -transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+  -moz-transform-origin:0 0;
+  -ms-transform-origin:0 0;
+  -o-transform-origin:0 0;
+}
+#door2 {
+  left:50%;
+  transform-origin:100% 0;
+  -webkit-transform-origin:100% 0;
+  -moz-transform-origin:100% 0;
+  -ms-transform-origin:100% 0;
+  -o-transform-origin:100% 0;
+}
+.open #door1, .open #door2 {
+  background:#999;
+  transform:translateZ(200px) rotateY(75deg);
+  -webkit-transform:translateZ(200px) rotateY(75deg);
+  -moz-transform:translateZ(200px) rotateY(75deg);
+  -ms-transform:translateZ(200px) rotateY(75deg);
+  -o-transform:translateZ(200px) rotateY(75deg);
+}
+.open #door2 {
+  transform:translateZ(200px) rotateY(-75deg);
+  -webkit-transform:translateZ(200px) rotateY(-75deg);
+  -moz-transform:translateZ(200px) rotateY(-75deg);
+  -ms-transform:translateZ(200px) rotateY(-75deg);
+  -o-transform:translateZ(200px) rotateY(-75deg);
+}
+cite {
+  position:absolute;
+  display:block;
+  font-style:normal;
+  left:50%;
+  top:100%;
+  margin-top:-25%;
+  margin-left:-150px;
+  width:300px;
+  height:15%;
+  font-family:Helvetica, sans-serif;
+  font-size:2.5em;
+  text-align:center;
+  color:#fff;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	font-weight:bold;
+	line-height:2em;
+	letter-spacing: 0.05em;
+	text-shadow:#fff 0 0 1px, 
+      #eee 0 4px 3px,
+			#ddd 0 9px 3px,
+			#ccc 0 12px 1px,
+			rgba(0,0,0,0.2) 0 14px 3px,
+			rgba(0,0,0,0.1) 0 20px 10px,
+			rgba(0,0,0,0.2) 0 15px 80px;
+  transform:rotateX(90deg) translateY(-600px) scaleY(5) scaleX(0.8);
+  -webkit-transform:rotateX(90deg) translateY(-600px) scaleY(5) scaleX(0.8);
+  -moz-transform:rotateX(90deg) translateY(-600px) scaleY(5) scaleX(0.8);
+  -ms-transform:rotateX(90deg) translateY(-600px) scaleY(5) scaleX(0.8);
+  -o-transform:rotateX(90deg) translateY(-600px) scaleY(5) scaleX(0.8);
+}
+    </style>
+  </head>
+  <body>
+    <div id="floor"></div>
+    <cite>Die Tür ist offen</cite>
+    <div id="door1"></div>
+    <div id="door2"></div>
+    <script>
+document.addEventListener("DOMContentLoaded", function(evt) {
+  document.body.className = "open";
+  setTimeout(function() {
+    document.body.className = "";
+  }, 10000);
+});
+var reload = function(evt) {
+  var timeout = 0;
+  if (document.body.className == "open") {
+    document.body.className = "";
+    timeout = 1000;
+  }
+  setTimeout(function() {
+    location.reload();
+  }, timeout)
+};
+document.body.addEventListener("click", reload);
+document.body.addEventListener("touchend", reload);
+document.body.addEventListener("touchmove", function(evt) {
+  evt.preventDefault();
+});
+    </script>
+  </body>
+</html>

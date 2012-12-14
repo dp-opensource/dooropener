@@ -1,0 +1,3 @@
+[submodule "frontend/OpenTheDamnDoor"]
+	path = frontend/OpenTheDamnDoor
+	url = git@github.com:michaelkamphausen/OpenTheDamnDoor.git
